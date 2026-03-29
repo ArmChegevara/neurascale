@@ -437,4 +437,41 @@ textarea:focus {
         background: rgba(20, 30, 60, 0.6);
         border: 1px solid rgba(255,255,255,0.08);
     }
+    /* Контейнер логотипа */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Иконка (N) */
+.logo-icon {
+    height: 42px;   /* уменьшаем */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Текст NEURASCALE */
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* Лёгкий glow под стиль */
+.logo-text {
+    text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
+}
+
+.logo-icon {
+    height: 32px;
+}
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #4f8cff, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 }

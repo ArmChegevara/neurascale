@@ -10,9 +10,16 @@ html {
 body {
     margin: 0;
     font-family: Inter, Arial, sans-serif;
-    background: #0b1020;
     color: #e8edf7;
     line-height: 1.6;
+
+    background: 
+        linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.95)),
+        url('/assets/images/bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* Conteneur principal */
@@ -316,8 +323,7 @@ textarea:focus {
 }
 
 .button-primary {
-    background: linear-gradient(135deg, #4f8cff, #7c5cff);
-    color: #ffffff;
+    background: linear-gradient(135deg, #3b82f6, #ef4444);
 }
 
 .button-primary:hover {
@@ -405,5 +411,30 @@ textarea:focus {
 
     .typing-box {
         min-height: 280px;
+    }
+
+    .logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    }
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Glow эффект */
+    .hero h1 {
+        text-shadow: 0 0 12px rgba(120, 160, 255, 0.25);
+    }
+
+    /* Карточки как стекло */
+    .info-card,
+    .contact-card,
+    .hero-card {
+        backdrop-filter: blur(12px);
+        background: rgba(20, 30, 60, 0.6);
+        border: 1px solid rgba(255,255,255,0.08);
     }
 }

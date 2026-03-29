@@ -465,7 +465,9 @@ textarea:focus {
 }
 
 .logo-icon {
-    height: 32px;
+    height: 26px;
+    width: auto;
+    object-fit: contain;
 }
 .logo-text {
     font-size: 1.2rem;

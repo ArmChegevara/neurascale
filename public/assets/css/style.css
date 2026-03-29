@@ -444,12 +444,8 @@ textarea:focus {
     gap: 10px;
 }
 
-/* Иконка (N) */
-.logo-icon {
-    height: 42px;   /* уменьшаем */
-    width: auto;
-    object-fit: contain;
-}
+
+
 
 /* Текст NEURASCALE */
 .logo-text {

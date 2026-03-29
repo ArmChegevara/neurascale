@@ -1,0 +1,12 @@
+.git
+.gitignore
+.vscode
+.idea
+node_modules
+vendor
+tmp
+temp
+logs
+*.log
+.DS_Store
+Thumbs.db

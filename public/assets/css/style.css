@@ -424,12 +424,12 @@ textarea:focus {
         gap: 12px;
     }
 
-    /* Glow эффект */
+    /* Glow effect */
     .hero h1 {
         text-shadow: 0 0 12px rgba(120, 160, 255, 0.25);
     }
 
-    /* Карточки как стекло */
+    
     .info-card,
     .contact-card,
     .hero-card {
@@ -437,7 +437,7 @@ textarea:focus {
         background: rgba(20, 30, 60, 0.6);
         border: 1px solid rgba(255,255,255,0.08);
     }
-    /* Контейнер логотипа */
+    /* Logo */
 .brand {
     display: flex;
     align-items: center;
@@ -447,7 +447,7 @@ textarea:focus {
 
 
 
-/* Текст NEURASCALE */
+/* Text NEURASCALE */
 .logo-text {
     font-size: 1.2rem;
     font-weight: 700;
@@ -455,7 +455,7 @@ textarea:focus {
     color: #ffffff;
 }
 
-/* Лёгкий glow под стиль */
+
 .logo-text {
     text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
 }

@@ -16,8 +16,8 @@ require __DIR__ . '/bootstrap.php';
     <header class="site-header">
         <div class="container header-inner">
             <a href="/index.php" class="brand">
-                <img src="/assets/images/logo.png" alt="NeuraScale" class="logo-icon">
-                <span class="logo-text">NEURASCALE</span>
+                <img src="/assets/images/logo-icon.svg" alt="NeuraScale" class="logo-icon">
+                <span class="logo-text">EURASCALE</span>
             </a>
 
             <nav class="main-nav" aria-label="Navigation principale">

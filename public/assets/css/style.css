@@ -184,12 +184,19 @@ body {
 
 /* Typing box */
 .typing-box {
-    min-height: 220px;
+    height: 260px;
+    overflow: hidden;
     padding: 24px;
     border-radius: 22px;
     background: rgba(14, 19, 36, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+}
+
+#typing-text {
+    margin: 0;
+    min-height: 170px;
+    white-space: pre-wrap;
 }
 
 .typing-box p {
@@ -460,16 +467,27 @@ textarea:focus {
     text-shadow: 0 0 8px rgba(120, 160, 255, 0.3);
 }
 
-.logo-icon {
-    height: 26px;
-    width: auto;
-    object-fit: contain;
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
 }
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    display: block;
+    flex: 0 0 auto;
+}
+
 .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    background: linear-gradient(90deg, #4f8cff, #ef4444);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(79, 140, 255, 0.22);
 }
 }

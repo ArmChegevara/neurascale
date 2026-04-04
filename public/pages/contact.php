@@ -121,80 +121,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /**
      * Envoi de l'email uniquement si la validation est correcte.
      */
-  if ($errors === []) {
-    try {
-        /**
-         * Initialisation du client SMTP.
-         */
-        $mail = new PHPMailer(true);
+    if ($errors === []) {
+        try {
+            /**
+             * Initialisation du client SMTP.
+             */
+            $mail = new PHPMailer(true);
 
-        /**
-         * Configuration SMTP.
-         */
-        $mail->isSMTP();
-        $mail->Host = $smtpHost;
-        $mail->SMTPAuth = true;
-        $mail->Username = $smtpUsername;
-        $mail->Password = $smtpPassword;
-        $mail->CharSet = 'UTF-8';
+            /**
+             * Configuration SMTP.
+             */
+            $mail->isSMTP();
+            $mail->Host = $smtpHost;
+            $mail->SMTPAuth = true;
+            $mail->Username = $smtpUsername;
+            $mail->Password = $smtpPassword;
+            $mail->CharSet = 'UTF-8';
 
-        /**
-         * Choix du chiffrement selon la configuration.
-         */
-        if ($smtpEncryption === 'tls') {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        } else {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        }
+            /**
+             * Choix du chiffrement selon la configuration.
+             */
+            if ($smtpEncryption === 'tls') {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            } else {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            }
 
-        $mail->Port = $smtpPort;
+            $mail->Port = $smtpPort;
 
-        /**
-         * Expéditeur et destinataire.
-         */
-        $mail->setFrom($mailFromAddress, $mailFromName);
-        $mail->addAddress($mailToAddress);
-        $mail->addReplyTo($formData['email'], $formData['name']);
+            /**
+             * Expéditeur et destinataire.
+             */
+            $mail->setFrom($mailFromAddress, $mailFromName);
+            $mail->addAddress($mailToAddress);
+            $mail->addReplyTo($formData['email'], $formData['name']);
 
-        /**
-         * Contenu du message.
-         */
-        $mail->isHTML(false);
-        $mail->Subject = 'Nouvelle demande depuis NeuraScale';
-        $mail->Body = implode("\n", [
-            'Nouvelle demande reçue depuis le site NeuraScale.',
-            '',
-            'Nom : ' . $formData['name'],
-            'Email : ' . $formData['email'],
-            '',
-            'Message :',
-            $formData['message'],
-        ]);
+            /**
+             * Contenu du message.
+             */
+            $mail->isHTML(false);
+            $mail->Subject = 'Nouvelle demande depuis NeuraScale';
+            $mail->Body = implode("\n", [
+                'Nouvelle demande reçue depuis le site NeuraScale.',
+                '',
+                'Nom : ' . $formData['name'],
+                'Email : ' . $formData['email'],
+                '',
+                'Message :',
+                $formData['message'],
+            ]);
 
-        $mail->send();
+            $mail->send();
 
-        $success = true;
-
-        /**
-         * Réinitialisation du formulaire après succès.
-         */
-        $formData = [
-            'name' => '',
-            'email' => '',
-            'message' => '',
-        ];
-
-        /**
-         * Régénération du jeton CSRF après soumission réussie.
-         */
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    } catch (Exception $exception) {
-        $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
-        error_log('Erreur SMTP contact.php : ' . $mail->ErrorInfo);
-    }
-}
-
-        if ($sent) {
             $success = true;
 
             /**
@@ -210,12 +188,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              * Régénération du jeton CSRF après soumission réussie.
              */
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        } else {
+        } catch (\Exception $exception) {
             $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
-            error_log('Échec mail() depuis contact.php vers: ' . $to);
+            error_log('Erreur SMTP contact.php : ' . $mail->ErrorInfo);
         }
     }
+
+    if ($sent) {
+        $success = true;
+
+        /**
+         * Réinitialisation du formulaire après succès.
+         */
+        $formData = [
+            'name' => '',
+            'email' => '',
+            'message' => '',
+        ];
+
+        /**
+         * Régénération du jeton CSRF après soumission réussie.
+         */
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    } else {
+        $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
+        error_log('Échec mail() depuis contact.php vers: ' . $to);
+    }
 }
+
 ?>
 
 <section class="page-hero section">

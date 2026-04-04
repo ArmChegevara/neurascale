@@ -28,7 +28,6 @@
             <h4>Contact</h4>
             <p>Email : <?= e($site['email']); ?></p>
             <p>Téléphone : <?= e($site['phone']); ?></p>
-            <p>Ville : <?= e($site['city']); ?></p>
         </div>
     </div>
 

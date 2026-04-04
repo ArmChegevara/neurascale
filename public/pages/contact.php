@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      * Envoi de l'email uniquement si la validation est correcte.
      */
     if ($errors === []) {
-        $to = $siteEmail;
+        $to = 'contact@neurascale.fr';
         $subject = 'Nouvelle demande depuis NeuraScale';
 
         $messageLines = [

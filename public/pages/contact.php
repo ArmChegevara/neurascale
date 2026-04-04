@@ -23,7 +23,7 @@ require __DIR__ . '/../../includes/header.php';
             <h2>Coordonnées</h2>
             <p><strong>Email :</strong> <?= e($site['email']); ?></p>
             <p><strong>Téléphone :</strong> <?= e($site['phone']); ?></p>
-            <p><strong>Ville :</strong> <?= e($site['city']); ?></p>
+            <p><strong>Ville :</strong> <?= e($contact['city'] ?? 'Reims') ?></p>
         </div>
 
         <div class="contact-card">

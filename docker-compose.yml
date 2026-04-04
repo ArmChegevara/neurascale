@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   neurascale:
     build: .
@@ -5,3 +7,15 @@ services:
     ports:
       - "8081:80"
     restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      APP_ENV: production
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_ENCRYPTION: ${SMTP_ENCRYPTION}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      MAIL_FROM_ADDRESS: ${MAIL_FROM_ADDRESS}
+      MAIL_FROM_NAME: ${MAIL_FROM_NAME}
+      MAIL_TO_ADDRESS: ${MAIL_TO_ADDRESS}

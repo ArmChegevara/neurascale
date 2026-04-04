@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 session_start();
 
 $currentPage = 'contact';
@@ -36,7 +39,20 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
+require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../includes/header.php';
+
+/**
+ * Configuration SMTP depuis les variables d'environnement.
+ */
+$smtpHost = $_ENV['SMTP_HOST'] ?? '';
+$smtpPort = (int) ($_ENV['SMTP_PORT'] ?? 465);
+$smtpEncryption = $_ENV['SMTP_ENCRYPTION'] ?? 'ssl';
+$smtpUsername = $_ENV['SMTP_USERNAME'] ?? '';
+$smtpPassword = $_ENV['SMTP_PASSWORD'] ?? '';
+$mailFromAddress = $_ENV['MAIL_FROM_ADDRESS'] ?? 'contact@neurascale.fr';
+$mailFromName = $_ENV['MAIL_FROM_NAME'] ?? 'NeuraScale';
+$mailToAddress = $_ENV['MAIL_TO_ADDRESS'] ?? 'contact@neurascale.fr';
 
 /**
  * Sécurisation des données du site.
@@ -105,11 +121,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /**
      * Envoi de l'email uniquement si la validation est correcte.
      */
-    if ($errors === []) {
-        $to = 'contact@neurascale.fr';
-        $subject = 'Nouvelle demande depuis NeuraScale';
+  if ($errors === []) {
+    try {
+        /**
+         * Initialisation du client SMTP.
+         */
+        $mail = new PHPMailer(true);
 
-        $messageLines = [
+        /**
+         * Configuration SMTP.
+         */
+        $mail->isSMTP();
+        $mail->Host = $smtpHost;
+        $mail->SMTPAuth = true;
+        $mail->Username = $smtpUsername;
+        $mail->Password = $smtpPassword;
+        $mail->CharSet = 'UTF-8';
+
+        /**
+         * Choix du chiffrement selon la configuration.
+         */
+        if ($smtpEncryption === 'tls') {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        } else {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        }
+
+        $mail->Port = $smtpPort;
+
+        /**
+         * Expéditeur et destinataire.
+         */
+        $mail->setFrom($mailFromAddress, $mailFromName);
+        $mail->addAddress($mailToAddress);
+        $mail->addReplyTo($formData['email'], $formData['name']);
+
+        /**
+         * Contenu du message.
+         */
+        $mail->isHTML(false);
+        $mail->Subject = 'Nouvelle demande depuis NeuraScale';
+        $mail->Body = implode("\n", [
             'Nouvelle demande reçue depuis le site NeuraScale.',
             '',
             'Nom : ' . $formData['name'],
@@ -117,18 +169,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             '',
             'Message :',
             $formData['message'],
+        ]);
+
+        $mail->send();
+
+        $success = true;
+
+        /**
+         * Réinitialisation du formulaire après succès.
+         */
+        $formData = [
+            'name' => '',
+            'email' => '',
+            'message' => '',
         ];
 
-        $mailBody = implode("\n", $messageLines);
-
-        $headers = [
-            'MIME-Version: 1.0',
-            'Content-Type: text/plain; charset=UTF-8',
-            'From: NeuraScale <' . $siteEmail . '>',
-            'Reply-To: ' . $formData['email'],
-        ];
-
-        $sent = mail($to, $subject, $mailBody, implode("\r\n", $headers));
+        /**
+         * Régénération du jeton CSRF après soumission réussie.
+         */
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    } catch (Exception $exception) {
+        $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
+        error_log('Erreur SMTP contact.php : ' . $mail->ErrorInfo);
+    }
+}
 
         if ($sent) {
             $success = true;
@@ -148,6 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         } else {
             $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
+            error_log('Échec mail() depuis contact.php vers: ' . $to);
         }
     }
 }

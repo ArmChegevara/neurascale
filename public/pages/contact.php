@@ -8,15 +8,7 @@ $currentPage = 'contact';
 $pageTitle = 'Contact | NeuraScale';
 $pageDescription = 'Contactez NeuraScale pour discuter de votre site web ou de votre projet digital.';
 
-/**
- * Échappe une valeur pour l'affichage HTML.
- */
-if (!function_exists('e')) {
-    function e(?string $value): string
-    {
-        return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
-    }
-}
+
 
 /**
  * Nettoie une chaîne reçue depuis le formulaire.

@@ -11,7 +11,7 @@ $heroText = "Chez NeuraScale, je conçois des sites web professionnels, rapides 
 <section class="hero section">
     <div class="container hero-grid">
         <div class="hero-content">
-            <span class="eyebrow">Agence digitale · PHP · France</span>
+            <span class="eyebrow"></span>
             <h1>Un site professionnel qui inspire confiance et soutient votre croissance.</h1>
 
             <div class="typing-box">
@@ -45,7 +45,7 @@ $heroText = "Chez NeuraScale, je conçois des sites web professionnels, rapides 
 <section class="section section-light">
     <div class="container">
         <div class="section-heading">
-            <span class="eyebrow">Positionnement</span>
+            <span class="eyebrow"></span>
             <h2>Des services concrets pour une présence digitale crédible</h2>
             <p>
                 Mon objectif est simple : construire un site utile, professionnel et prêt à servir

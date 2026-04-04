@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 session_start();
 
@@ -188,31 +187,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              * Régénération du jeton CSRF après soumission réussie.
              */
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        } catch (\Exception $exception) {
-            $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
-            error_log('Erreur SMTP contact.php : ' . $mail->ErrorInfo);
+        } catch (\Throwable $exception) {
+            $errors[] = 'Erreur SMTP : ' . $exception->getMessage();
+            error_log('Erreur SMTP contact.php : ' . $exception->getMessage());
         }
-    }
-
-    if ($sent) {
-        $success = true;
-
-        /**
-         * Réinitialisation du formulaire après succès.
-         */
-        $formData = [
-            'name' => '',
-            'email' => '',
-            'message' => '',
-        ];
-
-        /**
-         * Régénération du jeton CSRF après soumission réussie.
-         */
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    } else {
-        $errors[] = 'Une erreur est survenue lors de l’envoi du message.';
-        error_log('Échec mail() depuis contact.php vers: ' . $to);
     }
 }
 

@@ -39,8 +39,8 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-require __DIR__ . '/../../vendor/autoload.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../includes/header.php';
 
 /**
  * Configuration SMTP depuis les variables d'environnement.
@@ -303,4 +303,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </section>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

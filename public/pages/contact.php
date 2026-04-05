@@ -163,6 +163,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if ($siteCity !== ''): ?>
                 <p><strong>Ville :</strong> <?= htmlspecialchars($siteCity); ?></p>
             <?php endif; ?>
+
+            <p class="contact-note">
+                Si vous rencontrez un problème avec le formulaire de contact, vous pouvez me joindre directement via ces coordonnées.
+                Une réponse vous sera apportée sous 72 heures maximum.
+            </p>
         </div>
 
         <div class="contact-card">

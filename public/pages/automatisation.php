@@ -8,7 +8,6 @@ require __DIR__ . '/../../includes/header.php';
 
 <section class="page-hero section">
     <div class="container narrow">
-        <span class="eyebrow"></span>
         <h1>Gagner du temps grâce à des processus plus intelligents</h1>
         <p>
             L’automatisation permet de réduire les tâches répétitives, de fluidifier les échanges

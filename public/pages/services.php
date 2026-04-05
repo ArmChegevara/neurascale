@@ -8,7 +8,6 @@ require __DIR__ . '/../../includes/header.php';
 
 <section class="page-hero section">
     <div class="container narrow">
-        <span class="eyebrow"></span>
         <h1>Des prestations digitales orientées résultat</h1>
         <p>
             Je propose des services pensés pour les indépendants, entreprises et activités

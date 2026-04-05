@@ -8,8 +8,7 @@ require __DIR__ . '/../../includes/header.php';
 
 <section class="page-hero section">
     <div class="container narrow">
-        <span class="eyebrow">Processus</span>
-        <h1>Une méthode claire du premier échange à la mise en ligne</h1>
+                <h1>Une méthode claire du premier échange à la mise en ligne</h1>
         <p>
             Un bon projet digital se construit avec méthode. Mon approche vise à garder
             de la clarté, du rythme et un résultat professionnel.

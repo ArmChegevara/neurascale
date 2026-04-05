@@ -144,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="page-hero section">
     <div class="container narrow">
-        <span class="eyebrow">Contact</span>
         <h1>Parlons de votre projet</h1>
     </div>
 </section>

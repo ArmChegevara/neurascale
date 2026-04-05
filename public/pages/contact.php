@@ -153,7 +153,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container contact-layout">
         <div class="contact-card">
             <h2>Coordonnées</h2>
+
             <p><strong>Email :</strong> <?= htmlspecialchars($siteEmail); ?></p>
+
+            <?php if ($sitePhone !== ''): ?>
+                <p><strong>Téléphone :</strong> <?= htmlspecialchars($sitePhone); ?></p>
+            <?php endif; ?>
+
+            <?php if ($siteCity !== ''): ?>
+                <p><strong>Ville :</strong> <?= htmlspecialchars($siteCity); ?></p>
+            <?php endif; ?>
         </div>
 
         <div class="contact-card">

@@ -29,10 +29,10 @@
             <p>Email : <?= e($site['email']); ?></p>
             <p>Téléphone : <?= e($site['phone']); ?></p>
             <div class="social-icons">
-                <a href="#" target="_blank"><i class="fab fa-google"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.google.com/maps/..." target="_blank">
+                    <a href="https://facebook.com/..." target="_blank">
+                        <a href="https://instagram.com/..." target="_blank">
+                            <a href="https://youtube.com/..." target="_blank">
             </div>
         </div>
     </div>

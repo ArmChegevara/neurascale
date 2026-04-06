@@ -28,13 +28,24 @@
             <h4>Contact</h4>
             <p>Email : <?= e($site['email']); ?></p>
             <p>Téléphone : <?= e($site['phone']); ?></p>
-            <div class="social-icons">
+            <<div class="social-icons">
                 <a href="https://www.google.com/maps/..." target="_blank">
-                    <a href="https://facebook.com/..." target="_blank">
-                        <a href="https://instagram.com/..." target="_blank">
-                            <a href="https://youtube.com/..." target="_blank">
-            </div>
+                    <i class="fab fa-google"></i>
+                </a>
+
+                <a href="https://facebook.com/..." target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://instagram.com/..." target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://youtube.com/..." target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
         </div>
+    </div>
     </div>
     <div class="container footer-bottom">
         <p>© <?= date('Y'); ?> <?= e($site['site_name']); ?> — Tous droits réservés.</p>

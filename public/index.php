@@ -11,8 +11,17 @@ $heroText = "Chez NeuraScale, je conçois des sites web professionnels, rapides 
 <section class="hero section">
     <div class="container hero-grid">
         <div class="hero-content">
-            <span class="eyebrow"></span>
-            <h1>Un site professionnel qui inspire confiance et soutient votre croissance.</h1>
+            <span class="eyebrow">Sites web professionnels • Reims • France</span>
+
+            <h1 class="hero-title">
+                <span class="hero-line hero-white">Un site</span>
+                <span class="hero-line hero-blue">professionnel</span>
+                <span class="hero-line hero-red">qui rassure.</span>
+            </h1>
+
+            <p class="hero-subtext">
+                Je crée des sites web modernes, rapides et pensés pour inspirer confiance, valoriser votre activité et transformer vos visiteurs en contacts.
+            </p>
 
             <div class="typing-box">
                 <p id="typing-text" data-text="<?= e($heroText); ?>"></p>
@@ -45,7 +54,7 @@ $heroText = "Chez NeuraScale, je conçois des sites web professionnels, rapides 
 <section class="section section-light">
     <div class="container">
         <div class="section-heading">
-            <span class="eyebrow"></span>
+            <span class="eyebrow">Services</span>
             <h2>Des services concrets pour une présence digitale crédible</h2>
             <p>
                 Mon objectif est simple : construire un site utile, professionnel et prêt à servir

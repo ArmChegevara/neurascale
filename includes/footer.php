@@ -30,7 +30,12 @@
             <p>Téléphone : <?= e($site['phone']); ?></p>
         </div>
     </div>
-
+    <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-google"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
     <div class="container footer-bottom">
         <p>© <?= date('Y'); ?> <?= e($site['site_name']); ?> — Tous droits réservés.</p>
     </div>

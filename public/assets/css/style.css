@@ -820,4 +820,27 @@ textarea {
     .cta-actions {
         gap: 12px;
     }
+    .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    }
+
+    .social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+    background: linear-gradient(135deg, #6a5cff, #ff6b6b);
+    transform: translateY(-3px);
+}
 }

@@ -28,7 +28,7 @@
             <h4>Contact</h4>
             <p>Email : <?= e($site['email']); ?></p>
             <p>Téléphone : <?= e($site['phone']); ?></p>
-            <<div class="social-icons">
+            <div class="social-icons">
                 <a href="https://www.google.com/maps/..." target="_blank">
                     <i class="fab fa-google"></i>
                 </a>
@@ -41,11 +41,11 @@
                     <i class="fab fa-instagram"></i>
                 </a>
 
-                <a href="https://youtube.com/..." target="_blank">
+                <a href="https://www.youtube.com/@NeuraScale" target="_blank">
                     <i class="fab fa-youtube"></i>
                 </a>
+            </div>
         </div>
-    </div>
     </div>
     <div class="container footer-bottom">
         <p>© <?= date('Y'); ?> <?= e($site['site_name']); ?> — Tous droits réservés.</p>
